@@ -1,0 +1,22 @@
+{
+    "name": "zouxiang0639/form-builder",
+    "description": "The Form Builder Package",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "zouxiang",
+            "email": "542506511@qq.com"
+        }
+    ],
+    "require": {
+        "zouxiang0639/form-builder": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "think\\form\\": "src"
+        },
+        "files": [
+            "src/helper.php"
+        ]
+    }
+}
