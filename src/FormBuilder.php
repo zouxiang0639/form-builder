@@ -404,6 +404,11 @@ class FormBuilder {
         // all together into one single HTML element that can be put on the form.
         $html = array();
 
+        if (isset($options['placeholder'])) {
+            $html[] = $this->placeholderOption($options['placeholder'], $selected);
+            unset($options['placeholder']);
+        }
+
         foreach ($list as $value => $display)
         {
             $html[] = $this->getSelectOption($display, $value, $selected);
@@ -524,6 +529,24 @@ class FormBuilder {
         $selected = $this->getSelectedValue($value, $selected);
 
         $options = array('value' => e($value), 'selected' => $selected);
+
+        return '<option'.$this->html->attributes($options).'>'.e($display).'</option>';
+    }
+
+    /**
+     * Create a placeholder select element option.
+     *
+     * @param $display
+     * @param $selected
+     *
+     * @return string
+     */
+    protected function placeholderOption($display, $selected)
+    {
+        $selected = $this->getSelectedValue(null, $selected);
+
+        $options = compact('selected');
+        $options['value'] = '';
 
         return '<option'.$this->html->attributes($options).'>'.e($display).'</option>';
     }
